@@ -5,7 +5,7 @@ import {
 } from 'react-native-admob';
 
 import _ from './constants';
-import { logEvent } from './Analytics';
+import {logEvent} from './Analytics';
 
 class Ads {
   constructor() {
