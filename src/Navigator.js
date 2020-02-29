@@ -19,6 +19,7 @@ import {colors} from './utils/styles';
 import headerBackground from '../assets/topBarBg.png';
 import arrowBack from '../assets/icons/arrow-back.png';
 import {adsInstance} from './utils/Ads';
+import withAnalytics from '../src/utils/Analytics';
 
 const {width} = Dimensions.get('window');
 
@@ -39,49 +40,49 @@ const StackNavigator = createStackNavigator(
       }),
     },
     Report: {
-      screen: Report,
+      screen: withAnalytics(Report),
       navigationOptions: {
         title: 'Full Report',
       },
     },
     PDFViewer: {
-      screen: PDFViewer,
+      screen: withAnalytics(PDFViewer),
       navigationOptions: {
         title: 'Full PDF',
       },
     },
     Abbr: {
-      screen: Abbr,
+      screen: withAnalytics(Abbr),
       navigationOptions: {
         title: 'Abbreviations and Acronyms',
       },
     },
     Pillars: {
-      screen: Pillars,
+      screen: withAnalytics(Pillars),
       navigationOptions: {
         title: 'Pillars',
       },
     },
     Pillar: {
-      screen: Pillar,
+      screen: withAnalytics(Pillar),
       navigationOptions: ({navigation}) => ({
         title: navigation.state.params.title,
       }),
     },
     Highlights: {
-      screen: Highlights,
+      screen: withAnalytics(Highlights),
       navigationOptions: {
         title: 'Swahili Highlights',
       },
     },
     Highlight: {
-      screen: Highlight,
+      screen: withAnalytics(Highlight),
       navigationOptions: ({navigation}) => ({
         title: navigation.state.params.title,
       }),
     },
     Youth: {
-      screen: Youth,
+      screen: withAnalytics(Youth),
       navigationOptions: {
         title: 'Youth Section',
       },

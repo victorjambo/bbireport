@@ -5,6 +5,7 @@ import {
 } from 'react-native-admob';
 
 import _ from './constants';
+import { logEvent } from './Analytics';
 
 class Ads {
   constructor() {
@@ -45,14 +46,24 @@ class Ads {
     this.setAdCount();
     AdMobInterstitial.requestAd()
       .then(() => AdMobInterstitial.showAd())
-      .catch(error => console.warn('AdMobInterstitial:', error));
+      .catch(error => {
+        logEvent('AdMobInterstitialFailedToLoad', {
+          error: error.toString(),
+          errorObj: JSON.stringify(error),
+        });
+      });
   };
 
   showRewarded = () => {
     this.setAdCount();
     AdMobRewarded.requestAd()
       .then(() => AdMobRewarded.showAd())
-      .catch(error => console.warn('AdMobRewarded:', error));
+      .catch(error => {
+        logEvent('AdMobRewardedFailedToLoad', {
+          error: error.toString(),
+          errorObj: JSON.stringify(error),
+        });
+      });
   };
 }
 

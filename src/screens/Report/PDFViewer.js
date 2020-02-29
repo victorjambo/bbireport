@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Dimensions, View} from 'react-native';
 import Pdf from 'react-native-pdf';
 import eventListener from '../../utils/eventListener';
+import {logEvent} from '../../utils/Analytics';
 
 const {width, height} = Dimensions.get('window');
 
@@ -12,7 +13,12 @@ const PDFViewer = ({navigation}) => {
     <View style={styles.container}>
       <Pdf
         source={source}
-        onError={error => console.log(error)}
+        onError={error => {
+          logEvent('PDFViewer', {
+            error: error.toString(),
+            errorObj: JSON.stringify(error),
+          });
+        }}
         style={styles.pdf}
       />
     </View>

@@ -12,6 +12,7 @@ import _ from './utils/constants';
 import OfflineNotice from './components/OfflineNotice';
 import {checkNetwork} from './redux/actions';
 import {adsInstance} from '../src/utils/Ads';
+import {logEvent} from './utils/Analytics';
 
 const Root = ({ads, isConnected, checkConnection}) => {
   useEffect(() => {
@@ -39,8 +40,18 @@ const Root = ({ads, isConnected, checkConnection}) => {
           adSize="smartBanner"
           adUnitID={_.ADMOB_BANNER_ID}
           testDevices={[PublisherBanner.simulatorId]}
-          onAdFailedToLoad={error => console.error(error)}
-          onAppEvent={event => console.log(event.name, event.info)}
+          onAdFailedToLoad={error => {
+            logEvent('AdBannerFailedToLoad', {
+              error: error.toString(),
+              errorObj: JSON.stringify(error),
+            });
+          }}
+          onAppEvent={event => {
+            logEvent('AdBannerFailedToLoad', {
+              event: event.name,
+              eventInfo: event.info,
+            });
+          }}
         />
       )}
     </View>
