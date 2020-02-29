@@ -28,7 +28,7 @@ const StackNavigator = createStackNavigator(
     Home: {
       screen: Home,
       navigationOptions: () => ({
-        title: 'Home',
+        title: 'BBI Report',
         headerLeft: () => {},
         headerBackground: () => (
           <Image
@@ -91,7 +91,7 @@ const StackNavigator = createStackNavigator(
   {
     defaultNavigationOptions: () => ({
       headerStyle: {
-        backgroundColor: colors.primary,
+        backgroundColor: colors.statusBar,
         borderBottomWidth: 0,
       },
       headerBackground: () => (

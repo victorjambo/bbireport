@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import {
   StyleSheet,
   View,
@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   Dimensions,
+  ScrollView,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/dist/FontAwesome5';
@@ -18,77 +19,79 @@ import bbi from '../../assets/bbi-pic.jpg';
 import {colors} from '../utils/styles';
 import {adsInstance} from '../utils/Ads';
 
-const {width} = Dimensions.get('window');
+const {height, width} = Dimensions.get('window');
 
 const Home = ({navigation}) => {
-  useState(() => {
+  useEffect(() => {
     navigation.addListener('didFocus', adsInstance.setHomeTrue);
     navigation.addListener('didBlur', adsInstance.setHomeFalse);
   });
 
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        resizeMode="cover"
-        source={bbi}
-        style={[styles.section, styles.header]}>
-        <View style={styles.overlay} />
-        <View style={styles.imgBg}>
-          <Text style={[styles.title, styles.shadow]}>BBI Report</Text>
-          <View>
-            <Text style={[styles.position, styles.shadow]}>
-              Building Bridges to a United Kenya
-            </Text>
-            <Text style={[styles.company, styles.shadow]}>
-              From a nation of blood ties to a nation of ideals
-            </Text>
+    <ScrollView>
+      <View style={styles.container}>
+        <ImageBackground
+          resizeMode="cover"
+          source={bbi}
+          style={[styles.section, styles.header]}>
+          <View style={styles.overlay} />
+          <View style={styles.imgBg}>
+            <Text style={[styles.title, styles.shadow]}>BBI Report</Text>
+            <View>
+              <Text style={[styles.position, styles.shadow]}>
+                Building Bridges to a United Kenya
+              </Text>
+              <Text style={[styles.company, styles.shadow]}>
+                From a nation of blood ties to a nation of ideals
+              </Text>
+            </View>
           </View>
+        </ImageBackground>
+
+        <View style={styles.row}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Report')}
+            style={styles.item}>
+            <Icon name="clipboard-list" size={40} color={colors.primary} />
+            <Text style={styles.itemText}>Full Report</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Highlights')}
+            style={styles.item}>
+            <AntDesign name="bulb1" size={40} color={colors.primary} />
+            <Text style={styles.itemText}>Swahili Highlights</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Pillars')}
+            style={styles.item}>
+            <MaterialCommunityIcons
+              name="pillar"
+              size={40}
+              color={colors.primary}
+            />
+            <Text style={styles.itemText}>The Pillars</Text>
+          </TouchableOpacity>
         </View>
-      </ImageBackground>
 
-      <View style={styles.row}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Report')}
-          style={styles.item}>
-          <Icon name="clipboard-list" size={40} color={colors.primary} />
-          <Text style={styles.itemText}>Full Report</Text>
-        </TouchableOpacity>
+        <View style={styles.row}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Youth')}
+            style={styles.item}>
+            <Entypo name="slideshare" size={40} color={colors.primary} />
+            <Text style={styles.itemText}>Youth</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Highlights')}
-          style={styles.item}>
-          <AntDesign name="bulb1" size={40} color={colors.primary} />
-          <Text style={styles.itemText}>Swahili Highlights</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Pillars')}
-          style={styles.item}>
-          <MaterialCommunityIcons
-            name="pillar"
-            size={40}
-            color={colors.primary}
-          />
-          <Text style={styles.itemText}>The Pillars</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Abbr')}
+            style={styles.item}>
+            <MaterialIcons name="language" size={40} color={colors.primary} />
+            <Text style={styles.itemText}>Abbreviations</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-
-      <View style={styles.row}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Youth')}
-          style={styles.item}>
-          <Entypo name="slideshare" size={40} color={colors.primary} />
-          <Text style={styles.itemText}>Youth</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Abbr')}
-          style={styles.item}>
-          <MaterialIcons name="language" size={40} color={colors.primary} />
-          <Text style={styles.itemText}>Abbreviations</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -127,7 +130,7 @@ const imageBackgroundStyles = {
   },
   section: {
     position: 'relative',
-    height: width / 2.5,
+    height: width > height ? height / 4 : width / 2.5,
   },
   overlay: {
     position: 'absolute',
