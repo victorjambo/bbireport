@@ -91,7 +91,7 @@ const StackNavigator = createStackNavigator(
   {
     defaultNavigationOptions: () => ({
       headerStyle: {
-        backgroundColor: colors.statusBar,
+        backgroundColor: colors.primary,
         borderBottomWidth: 0,
       },
       headerBackground: () => (
