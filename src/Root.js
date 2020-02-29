@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {BackHandler} from 'react-native';
 import ExitOnDoubleBack from 'exit-on-double-back';
-import {addNavigationHelpers, NavigationActions} from 'react-navigation';
+import {NavigationActions} from 'react-navigation';
 
 import Navigator from './Navigator';
 import {colors} from './utils/styles';

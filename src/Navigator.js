@@ -47,9 +47,9 @@ const StackNavigator = createStackNavigator(
     },
     PDFViewer: {
       screen: withAnalytics(PDFViewer),
-      navigationOptions: {
-        title: 'Full PDF',
-      },
+      navigationOptions: ({navigation}) => ({
+        title: navigation.state.params.title,
+      }),
     },
     Abbr: {
       screen: withAnalytics(Abbr),
