@@ -1,25 +1,24 @@
 import _ from '../utils/constants';
 
 /**
- * TODO
- * sections
- * images
- * pdfs
+ * https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Feconomy.webp?alt=media
+ * https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Fbbi_team.webp?alt=media
  */
 
 export const images = [
-  'https://reactnativestarter.com/demo/images/city-sunny-people-street.jpg',
-  'https://reactnativestarter.com/demo/images/pexels-photo-26549.jpg',
-  'https://reactnativestarter.com/demo/images/pexels-photo-30360.jpg',
-  'https://reactnativestarter.com/demo/images/pexels-photo-37839.jpg',
-  'https://reactnativestarter.com/demo/images/pexels-photo-69212.jpg',
-  'https://reactnativestarter.com/demo/images/pexels-photo-108061.jpg',
-  'https://reactnativestarter.com/demo/images/pexels-photo-126371.jpg',
-  'https://reactnativestarter.com/demo/images/pexels-photo-165888.jpg',
-  'https://reactnativestarter.com/demo/images/pexels-photo-167854.jpg',
-  'https://reactnativestarter.com/demo/images/pexels-photo-173427.jpg',
-  'https://reactnativestarter.com/demo/images/pexels-photo-175696.jpg',
-  'https://reactnativestarter.com/demo/images/pexels-photo-175733.jpg',
+  'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Fbaba.webp?alt=media',
+  'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Fbbi_team_hero.webp?alt=media',
+  'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Fcorruption.webp?alt=media',
+  'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Fdance.webp?alt=media',
+  'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Fedu.webp?alt=media',
+  'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Fgirl_doll.webp?alt=media',
+  'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Fkitu_kidogo.webp?alt=media',
+  'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Fland_grabbing.webp?alt=media',
+  'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Fmps.webp?alt=media',
+  'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Fonekenya.webp?alt=media',
+  'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Four_land.webp?alt=media',
+  'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Ftwo_kids_mom.webp?alt=media',
+  'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Fuhuru.webp?alt=media',
 ];
 
 const data = [
@@ -28,7 +27,8 @@ const data = [
     title: `Chapter ${_.ONE}`,
     sections: 'Sections 6-23',
     headline: 'Notable issues that Kenyans must deal with',
-    uri: '',
+    uri:
+      'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Fbbireport_chapter_1.pdf?alt=media',
   },
   {
     id: _.TWO,
@@ -107,14 +107,16 @@ const data = [
     title: `Chapter ${_.ELEVEN}`,
     sections: 'Sections 6-22',
     headline: 'Commissions and cross-cutting issues',
-    uri: '',
+    uri:
+      'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Fbbireport_chapter_11.pdf?alt=media',
   },
   {
     id: _.TWELVE,
     title: `Chapter ${_.TWELVE}`,
     sections: 'Sections 6-22',
     headline: 'Conclusion',
-    uri: '',
+    uri:
+      'https://firebasestorage.googleapis.com/v0/b/mutaidev-21e91.appspot.com/o/bbi%2Fbbireport_chapter_12.pdf?alt=media',
   },
 ];
 
