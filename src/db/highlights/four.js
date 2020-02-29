@@ -1,0 +1,9 @@
+const four = `<p>Haya ndio matishio makuu kwa ufanisi wa Kenya na ustawi wa nchi yetu. Jopokazi linapendekeza hatua zifuatazo zichukuliwe:</p>
+<ol><li>Kuelimisha Wakenya kuhusu tamaduni na mila zao tofautitofauti na kuunda mtaala wa shule unaofundisha wanafunzi kuhusu tamaduni na mila za kila jamii na dini nchini Kenya. Pia, ni sharti shule zote za sekondari za bweni za umma ziandikishe asilimia 50 ya idadi ya wanafunzi wake kutoka nje ya kaunti.</li>
+<li>Ondoa mtindo wa urais wa "mshindi ndiye anayechukua kila kitu", badala yake anzisha mfumo jumuishi wa kisiasa. Hii itabadilisha mfumo wetu wa kisiasa ili uambatane zaidi na desturi za makubaliano ya watu wetu, na kupunguza makali ya kikabila ambayo ndio msingi wa ushindani wa kisiasa anaovuruga ubora wa uchaguzi.</li>
+<li>Kama njia ya kuunganisha jamii zetu zilizo mipakani, na kubadilisha mfumo wetu wa sasa wa kisiasa na kikabila, huku tukijenga uchumi uliostawi zaidi, tuharakishe mchakato wa Ushirikiano wa Jumuiya ya Afrika Mashariki kama hatua ya kuafikia Shirikisho la Kisiasa.</li>
+<li>Hakikisha kwamba usambazaji wa rasilimali haufanywi kwa usawa pekee bali pawe hasa na hisia za usawa - Punguza migogoro kuhusiana na usambazaji wa rasilimali za kitaifa kwa kuwachukulia Wakenya wote kuwa sawa - hii inapaswa kuzingatia idadi ya watu, uwekezaji unaohitajika katika sekta za afya na kilimo, utoaji wa huduma, na upatikanaji wa rasilimali asili na fursa za kuishi</li>
+<li>Baraza la washauri — Kwamba Rais kama Nembo ya Umoja wa Kitaifa anapaswa kuwa na ushauri wa kibinafsi wa watu mashuhuri, wenye uzoefu, na wenye heshima wanaohudumu katika Baraza la Washauri pasi na kulipwa mishahara.</li>
+<li>Imarisha ofisi ya Msajili wa Vyama vya Kisiasa ili kuiwezesha kushughulikia tatizo la ubaguzi wa kisiasa kwa kuajiri na kuteua Msajili ambaye ni huru, anayejiamini na mchapa kazi.</li></ol>`;
+
+export default four;
