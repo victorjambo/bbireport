@@ -89,6 +89,17 @@ const Home = ({navigation}) => {
             <MaterialIcons name="language" size={40} color={colors.primary} />
             <Text style={styles.itemText}>Abbreviations</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => console.log('Rate us')}
+            style={styles.item}>
+            <MaterialIcons
+              name="rate-review"
+              size={40}
+              color={colors.primary}
+            />
+            <Text style={styles.itemText}>Rate us</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
@@ -152,6 +163,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
+    height,
   },
   row: {
     flexDirection: 'row',

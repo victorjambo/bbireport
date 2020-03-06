@@ -11,11 +11,11 @@ class Ads {
   constructor() {
     this.isHome = true;
     this.adCount = 1;
-    PublisherBanner.simulatorId = _.TEST_ADMOB_BANNER_ID;
-    AdMobInterstitial.simulatorId = _.TEST_ADMOB_INTERSTITIAL_ID;
+    PublisherBanner.simulatorId = _.ADMOB_BANNER_ID;
+    AdMobInterstitial.simulatorId = _.ADMOB_INTERSTITIAL_ID;
     AdMobInterstitial.setTestDevices([AdMobInterstitial.simulatorId]);
-    AdMobInterstitial.setAdUnitID(_.TEST_ADMOB_INTERSTITIAL_ID);
-    AdMobRewarded.setAdUnitID(_.TEST_ADMOB_REWARDED);
+    AdMobInterstitial.setAdUnitID(_.ADMOB_INTERSTITIAL_ID);
+    AdMobRewarded.setAdUnitID(_.ADMOB_REWARDED);
   }
 
   getHome = () => this.isHome;
