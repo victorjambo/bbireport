@@ -18,6 +18,7 @@ import AntDesign from 'react-native-vector-icons/dist/AntDesign';
 import bbi from '../../assets/bbi-pic.jpg';
 import {colors} from '../utils/styles';
 import {adsInstance} from '../utils/Ads';
+import rateApp from '../utils/rateApp';
 
 const {height, width} = Dimensions.get('window');
 
@@ -90,15 +91,13 @@ const Home = ({navigation}) => {
             <Text style={styles.itemText}>Abbreviations</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={() => console.log('Rate us')}
-            style={styles.item}>
+          <TouchableOpacity onPress={rateApp} style={styles.item}>
             <MaterialIcons
               name="rate-review"
               size={40}
               color={colors.primary}
             />
-            <Text style={styles.itemText}>Rate us</Text>
+            <Text style={styles.itemText}>Rate App</Text>
           </TouchableOpacity>
         </View>
       </View>
