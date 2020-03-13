@@ -1,5 +1,6 @@
 export const HIDE_BANNER = 'HIDE_BANNER';
 export const NETWORK = 'NETWORK';
+export const HIDE_SPLASH = 'HIDE_SPLASH';
 
 const constants = {
   ONE: '1',

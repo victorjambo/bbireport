@@ -3,8 +3,20 @@ import getCurrentRouteName from 'redux-ga-screen-tracker/utils/transformer.utils
 import {NavigationActions} from 'react-navigation';
 
 import Navigator from '../Navigator';
-import {HIDE_BANNER, NETWORK} from '../utils/constants';
+import {HIDE_BANNER, NETWORK, HIDE_SPLASH} from '../utils/constants';
 import initialState from './initialState';
+
+const appStateReducer = (state = initialState.appState, action) => {
+  switch (action.type) {
+    case HIDE_SPLASH:
+      return {
+        ...state,
+        hideSplash: true,
+      };
+    default:
+      return state;
+  }
+};
 
 const adReducer = (state = initialState.ads, action) => {
   switch (action.type) {
@@ -75,4 +87,5 @@ export default combineReducers({
   ads: adReducer,
   connection: networkReducer,
   nav,
+  appState: appStateReducer,
 });
