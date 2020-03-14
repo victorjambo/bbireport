@@ -4,26 +4,19 @@ import {StyleSheet, View, StatusBar} from 'react-native';
 import {PublisherBanner} from 'react-native-admob';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {BackHandler} from 'react-native';
-import ExitOnDoubleBack from 'exit-on-double-back';
-import {NavigationActions} from 'react-navigation';
 
+import ExitOnDoubleBack from './utils/ExitOnDoubleBack';
 import Navigator from './Navigator';
 import {colors} from './utils/styles';
 import _ from './utils/constants';
 import OfflineNotice from './components/OfflineNotice';
 import {checkNetwork} from './redux/actions';
-import {adsInstance} from '../src/utils/Ads';
 import {logEvent} from './utils/Analytics';
 
-const Root = ({ads, isConnected, checkConnection, nav, goBack}) => {
+const Root = ({ads, isConnected, checkConnection, nav}) => {
   useEffect(() => {
     SplashScreen.hide();
     checkConnection();
-    BackHandler.addEventListener(
-      'hardwareBackPress',
-      adsInstance.showFullScreenAd,
-    );
   }, [checkConnection]);
 
   return (
@@ -33,10 +26,7 @@ const Root = ({ads, isConnected, checkConnection, nav, goBack}) => {
         barStyle="light-content"
       />
 
-      <ExitOnDoubleBack
-        exitableRoutes={['Home']}
-        nav={nav}
-        backHandler={goBack}>
+      <ExitOnDoubleBack exitableRoutes={['Home']} nav={nav}>
         <Navigator />
       </ExitOnDoubleBack>
 
@@ -79,7 +69,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   checkConnection: bindActionCreators(checkNetwork, dispatch),
-  goBack: () => this.props.dispatch(NavigationActions.back()),
 });
 
 export default connect(
