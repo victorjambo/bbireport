@@ -2,15 +2,16 @@ import NetInfo from '@react-native-community/netinfo';
 import functions from '@react-native-firebase/functions';
 
 import {
-  HIDE_BANNER,
   NETWORK,
   HIDE_SPLASH,
+  AD_STATE,
   INCREMENT_AD_COUNTER,
   REWARDED_IS_READY,
   REWARDED_IS_NOT_READY,
   INTERSTITIAL_IS_READY,
   INTERSTITIAL_IS_NOT_READY,
 } from '../utils/constants';
+import {logEvent} from '../utils/Analytics';
 
 const setConnection = status => ({
   type: NETWORK,
@@ -29,31 +30,43 @@ const hideSplash = () => ({
   type: HIDE_SPLASH,
 });
 
-const setAdID = payload => ({
-  type: NETWORK,
+const setAdState = payload => ({
+  type: AD_STATE,
   payload,
 });
 
+const logerror = error => {
+  if (__DEV__) {
+    console.log('ERROR_FETCHING_APPSTATE', error);
+  } else {
+    logEvent('ERROR_FETCHING_APPSTATE', {
+      error: error.toString(),
+      errorObj: JSON.stringify(error),
+    });
+  }
+};
+
 export const adNetwork = () => {
   return (dispatch, getState) => {
-    const {isConnected} = getState();
-    if (isConnected) {
+    const {connection} = getState();
+    if (connection.isConnected) {
       try {
-        if (__DEV__) {
-          return fetch('http://localhost:3000/bbi')
-            .then(res => console.log(res))
-            .catch(error => console.error(error));
-        }
-        functions()
-          .httpsCallable('adNetwork')
+        const request = functions().httpsCallable('appstate');
+        request()
           .then(res => {
-            dispatch(setAdID(res.bbi));
+            dispatch(setAdState(res.data.bbi));
             dispatch(hideSplash());
           })
-          .catch(err => console.error('ERROR_FETCHING_AD_IDS', err));
-      } catch (e) {
-        console.error(e);
+          .catch(error => {
+            dispatch(hideSplash());
+            logerror(error);
+          });
+      } catch (error) {
+        logerror(error);
+        dispatch(hideSplash());
       }
+    } else {
+      dispatch(hideSplash());
     }
   };
 };

@@ -11,11 +11,20 @@ import OfflineNotice from './components/OfflineNotice';
 import {checkNetwork, incrementAdCounter} from './redux/actions';
 import AdManager from './utils/AdManager';
 
-const Root = ({ads, isConnected, checkConnection, nav, incrementAd}) => {
+const Root = ({
+  ads,
+  isConnected,
+  checkConnection,
+  nav,
+  incrementAd,
+  hideSplash,
+}) => {
   useEffect(() => {
-    SplashScreen.hide();
     checkConnection();
-  }, [checkConnection, ads]);
+    if (!hideSplash) {
+      SplashScreen.hide();
+    }
+  }, [checkConnection, hideSplash]);
 
   return (
     <View style={styles.container}>
@@ -45,6 +54,7 @@ const mapStateToProps = state => ({
   isConnected: state.connection.isConnected,
   ads: state.ads,
   nav: state.nav,
+  hideSplash: state.appState.hideSplash,
 });
 
 const mapDispatchToProps = dispatch => ({

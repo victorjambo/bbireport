@@ -6,6 +6,7 @@ import Navigator from '../Navigator';
 import {
   NETWORK,
   HIDE_SPLASH,
+  AD_STATE,
   INCREMENT_AD_COUNTER,
   REWARDED_IS_READY,
   REWARDED_IS_NOT_READY,
@@ -28,6 +29,11 @@ const appStateReducer = (state = initialState.appState, action) => {
 
 const adReducer = (state = initialState.ads, action) => {
   switch (action.type) {
+    case AD_STATE:
+      return {
+        ...state,
+        ...action.payload,
+      };
     case INCREMENT_AD_COUNTER:
       return {
         ...state,

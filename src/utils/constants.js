@@ -5,6 +5,7 @@ export const REWARDED_IS_READY = 'REWARDED_IS_READY';
 export const REWARDED_IS_NOT_READY = 'REWARDED_IS_NOT_READY';
 export const INTERSTITIAL_IS_READY = 'INTERSTITIAL_IS_READY';
 export const INTERSTITIAL_IS_NOT_READY = 'INTERSTITIAL_IS_NOT_READY';
+export const AD_STATE = 'AD_STATE';
 
 const constants = {
   ONE: '1',
