@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View,
@@ -17,17 +17,11 @@ import AntDesign from 'react-native-vector-icons/dist/AntDesign';
 
 import bbi from '../../assets/bbi-pic.jpg';
 import {colors} from '../utils/styles';
-import {adsInstance} from '../utils/Ads';
 import rateApp from '../utils/rateApp';
 
 const {height, width} = Dimensions.get('window');
 
 const Home = ({navigation}) => {
-  useEffect(() => {
-    navigation.addListener('didFocus', adsInstance.setHomeTrue);
-    navigation.addListener('didBlur', adsInstance.setHomeFalse);
-  });
-
   return (
     <ScrollView>
       <View style={styles.container}>

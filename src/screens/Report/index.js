@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
+import {connect} from 'react-redux';
 
 import data, {images} from '../../db/data';
 import Item from './Item';
 import {colors} from '../../utils/styles';
 import shuffle from '../../utils/shaffle';
+import showAds from '../../utils/showAds';
 
 const updateImgUrl = reports => {
   const imgs = shuffle(images);
@@ -16,8 +18,10 @@ const updateImgUrl = reports => {
   return reports;
 };
 
-const Report = ({navigation}) => {
+const Report = ({navigation, ads}) => {
   const reports = updateImgUrl(data);
+
+  useEffect(() => showAds(ads));
 
   return (
     <View>
@@ -31,6 +35,10 @@ const Report = ({navigation}) => {
   );
 };
 
+const mapStateToProps = state => ({
+  ads: state.ads,
+});
+
 const styles = StyleSheet.create({
   flatlist: {
     backgroundColor: colors.white,
@@ -38,4 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Report;
+export default connect(mapStateToProps)(Report);

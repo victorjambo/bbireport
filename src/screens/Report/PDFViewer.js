@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet, Dimensions, View} from 'react-native';
 import Pdf from 'react-native-pdf';
-import eventListener from '../../utils/eventListener';
 import {logEvent} from '../../utils/Analytics';
 
 const {width, height} = Dimensions.get('window');
@@ -38,4 +37,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default eventListener(PDFViewer);
+export default PDFViewer;

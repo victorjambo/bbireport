@@ -18,8 +18,8 @@ import {
 import {colors} from './utils/styles';
 import headerBackground from '../assets/topBarBg.png';
 import arrowBack from '../assets/icons/arrow-back.png';
-import {adsInstance} from './utils/Ads';
-import withAnalytics from '../src/utils/Analytics';
+import withAnalytics from './utils/Analytics';
+import {withAds} from './utils/showAds';
 
 const {width} = Dimensions.get('window');
 
@@ -89,7 +89,7 @@ const StackNavigator = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: () => ({
+    defaultNavigationOptions: ({navigation}) => ({
       headerStyle: {
         backgroundColor: colors.primary,
         borderBottomWidth: 0,
@@ -108,7 +108,8 @@ const StackNavigator = createStackNavigator(
       headerLeft: props => (
         <TouchableOpacity
           onPress={() => {
-            adsInstance.showFullScreenAd();
+            const {ads} = navigation.getScreenProps();
+            withAds(ads);
             props.onPress();
           }}
           style={styles.headerLeft}>

@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, ScrollView} from 'react-native';
 import {ListItem} from 'react-native-elements';
+import {connect} from 'react-redux';
 
 import data from '../../db/pillars';
 import {colors} from '../../utils/styles';
+import showAds from '../../utils/showAds';
 
-const Pillars = ({navigation}) => {
+const Pillars = ({navigation, ads}) => {
+  useEffect(() => showAds(ads));
+
   return (
     <ScrollView>
       <View>
@@ -28,4 +32,8 @@ const Pillars = ({navigation}) => {
   );
 };
 
-export default Pillars;
+const mapStateToProps = state => ({
+  ads: state.ads,
+});
+
+export default connect(mapStateToProps)(Pillars);

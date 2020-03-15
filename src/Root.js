@@ -1,23 +1,22 @@
 import React, {useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import {StyleSheet, View, StatusBar} from 'react-native';
-import {PublisherBanner} from 'react-native-admob';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import ExitOnDoubleBack from './utils/ExitOnDoubleBack';
 import Navigator from './Navigator';
 import {colors} from './utils/styles';
-import _ from './utils/constants';
 import OfflineNotice from './components/OfflineNotice';
 import {checkNetwork} from './redux/actions';
-import {logEvent} from './utils/Analytics';
+import AdManager from './utils/AdManager';
 
 const Root = ({ads, isConnected, checkConnection, nav}) => {
   useEffect(() => {
     SplashScreen.hide();
     checkConnection();
-  }, [checkConnection]);
+    console.log(ads.adCount);
+  }, [checkConnection, ads]);
 
   return (
     <View style={styles.container}>
@@ -27,30 +26,12 @@ const Root = ({ads, isConnected, checkConnection, nav}) => {
       />
 
       <ExitOnDoubleBack exitableRoutes={['Home']} nav={nav}>
-        <Navigator />
+        <Navigator screenProps={{ads}} />
       </ExitOnDoubleBack>
 
       {!isConnected && <OfflineNotice />}
 
-      {ads.showBanner && (
-        <PublisherBanner
-          adSize="smartBanner"
-          adUnitID={_.ADMOB_BANNER_ID}
-          testDevices={[PublisherBanner.simulatorId]}
-          onAdFailedToLoad={error => {
-            logEvent('AdBannerFailedToLoad', {
-              error: error.toString(),
-              errorObj: JSON.stringify(error),
-            });
-          }}
-          onAppEvent={event => {
-            logEvent('AdBannerFailedToLoad', {
-              event: event.name,
-              eventInfo: event.info,
-            });
-          }}
-        />
-      )}
+      {ads.showBanner && <AdManager />}
     </View>
   );
 };

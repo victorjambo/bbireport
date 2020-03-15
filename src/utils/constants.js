@@ -1,6 +1,16 @@
 export const HIDE_BANNER = 'HIDE_BANNER';
 export const NETWORK = 'NETWORK';
 export const HIDE_SPLASH = 'HIDE_SPLASH';
+export const HIDE_FULLSCREEN_AD = 'HIDE_FULLSCREEN_AD';
+export const SHOW_FULLSCREEN_AD = 'SHOW_FULLSCREEN_AD';
+export const INCREMENT_AD_COUNTER = 'INCREMENT_AD_COUNTER';
+export const RESET_AD_COUNTER = 'RESET_AD_COUNTER';
+export const REWARDED_IS_READY = 'REWARDED_IS_READY';
+export const REWARDED_IS_NOT_READY = 'REWARDED_IS_NOT_READY';
+export const INTERSTITIAL_IS_READY = 'INTERSTITIAL_IS_READY';
+export const INTERSTITIAL_IS_NOT_READY = 'INTERSTITIAL_IS_NOT_READY';
+export const SHOW_INTERSTITIAL = 'SHOW_INTERSTITIAL';
+export const HIDE_INTERSTITIAL = 'HIDE_INTERSTITIAL';
 
 const constants = {
   ONE: '1',
@@ -25,6 +35,7 @@ const constants = {
   TEST_ADMOB_BANNER_ID: 'ca-app-pub-3940256099942544/6300978111',
   TEST_ADMOB_INTERSTITIAL_ID: 'ca-app-pub-3940256099942544/1033173712',
   TEST_ADMOB_REWARDED: 'ca-app-pub-3940256099942544/5224354917',
+  NETWORK_ERROR: 'The ad request was unsuccessful due to network connectivity.',
 };
 
 export default constants;
