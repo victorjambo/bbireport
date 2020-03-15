@@ -8,7 +8,7 @@ export default {
     banner: _.ADMOB_BANNER_ID,
     interstetial: _.ADMOB_INTERSTITIAL_ID,
     reward: _.ADMOB_REWARDED,
-    fequency: 3,
+    fequency: 2,
     show: 'BEFORE',
     enabled: true,
     isHome: true,

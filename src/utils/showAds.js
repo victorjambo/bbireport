@@ -10,7 +10,8 @@ export class Ads {
   }
 
   isEven = () => {
-    return this.ads.adCount % this.ads.fequency === 0;
+    const {adCount, fequency} = this.ads;
+    return adCount !== 0 && adCount % fequency === 0;
   };
 
   showInterstitial = () => {
