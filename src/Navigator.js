@@ -19,6 +19,7 @@ import {colors} from './utils/styles';
 import headerBackground from '../assets/topBarBg.png';
 import arrowBack from '../assets/icons/arrow-back.png';
 import withAnalytics from './utils/Analytics';
+import Settings from './screens/Settings';
 
 const {width} = Dimensions.get('window');
 
@@ -84,6 +85,12 @@ const StackNavigator = createStackNavigator(
       screen: withAnalytics(Youth),
       navigationOptions: {
         title: 'Youth Section',
+      },
+    },
+    Settings: {
+      screen: withAnalytics(Settings),
+      navigationOptions: {
+        title: 'Settings',
       },
     },
   },

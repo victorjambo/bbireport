@@ -107,15 +107,11 @@ const Home = ({navigation, incrementAd}) => {
           <TouchableOpacity
             onPress={() => {
               adinstance.showAds(incrementAd);
-              rateApp();
+              navigation.navigate('Settings');
             }}
             style={styles.item}>
-            <MaterialIcons
-              name="rate-review"
-              size={40}
-              color={colors.primary}
-            />
-            <Text style={styles.itemText}>Rate App</Text>
+            <MaterialIcons name="settings" size={40} color={colors.primary} />
+            <Text style={styles.itemText}>Settings</Text>
           </TouchableOpacity>
         </View>
       </View>
