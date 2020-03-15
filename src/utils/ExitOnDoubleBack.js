@@ -2,9 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {BackHandler, ToastAndroid} from 'react-native';
 import {NavigationActions} from 'react-navigation';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {hideInterstitial} from '../redux/actions';
 
 class ExitOnDoubleBack extends React.Component {
   UNSAFE_componentWillMount() {
@@ -26,7 +23,6 @@ class ExitOnDoubleBack extends React.Component {
   };
   _handleExit = () => {
     if (!this.timer.isTimerRunning) {
-      this.props.hideInterstitial();
       this.timer.isTimerRunning = true;
       const backInterval = this.props.doubleBackInterval;
       clearTimeout(this.timer.ref);
@@ -84,11 +80,4 @@ ExitOnDoubleBack.propTypes = {
   nav: PropTypes.object,
 };
 
-const mapDispatchToProps = dispatch => ({
-  hideInterstitial: bindActionCreators(hideInterstitial, dispatch),
-});
-
-export default connect(
-  null,
-  mapDispatchToProps,
-)(ExitOnDoubleBack);
+export default ExitOnDoubleBack;

@@ -4,20 +4,13 @@ import {NavigationActions} from 'react-navigation';
 
 import Navigator from '../Navigator';
 import {
-  HIDE_BANNER,
   NETWORK,
   HIDE_SPLASH,
-  SHOW_FULLSCREEN_AD,
-  HIDE_FULLSCREEN_AD,
   INCREMENT_AD_COUNTER,
-  RESET_AD_COUNTER,
   REWARDED_IS_READY,
   REWARDED_IS_NOT_READY,
   INTERSTITIAL_IS_READY,
   INTERSTITIAL_IS_NOT_READY,
-  SHOW_INTERSTITIAL,
-  HIDE_INTERSTITIAL,
-  SET_HOME,
 } from '../utils/constants';
 import initialState from './initialState';
 
@@ -35,30 +28,10 @@ const appStateReducer = (state = initialState.appState, action) => {
 
 const adReducer = (state = initialState.ads, action) => {
   switch (action.type) {
-    case HIDE_BANNER:
-      return {
-        ...state,
-        showBanner: action.payload,
-      };
-    case SHOW_FULLSCREEN_AD:
-      return {
-        ...state,
-        isFullscreenAdVisible: true,
-      };
-    case HIDE_FULLSCREEN_AD:
-      return {
-        ...state,
-        isFullscreenAdVisible: false,
-      };
     case INCREMENT_AD_COUNTER:
       return {
         ...state,
         adCount: state.adCount + 1,
-      };
-    case RESET_AD_COUNTER:
-      return {
-        ...state,
-        adCount: action.payload,
       };
     case REWARDED_IS_READY:
       return {
@@ -79,21 +52,6 @@ const adReducer = (state = initialState.ads, action) => {
       return {
         ...state,
         isInterstitialReady: false,
-      };
-    case SHOW_INTERSTITIAL:
-      return {
-        ...state,
-        showInterstitial: !state.showInterstitial,
-      };
-    case HIDE_INTERSTITIAL:
-      return {
-        ...state,
-        showInterstitial: false,
-      };
-    case SET_HOME:
-      return {
-        ...state,
-        isHome: action.payload,
       };
     default:
       return state;

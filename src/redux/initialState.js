@@ -4,7 +4,6 @@ export default {
   ads: {
     showRewarded: false,
     showInterstitial: true,
-    isFullscreenAdVisible: false,
     showBanner: true,
     banner: _.ADMOB_BANNER_ID,
     interstetial: _.ADMOB_INTERSTITIAL_ID,

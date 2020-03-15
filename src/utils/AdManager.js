@@ -126,11 +126,6 @@ class AdManager extends React.Component {
   };
 
   errorHandler = (msg, error) => {
-    if (error.toString() === ERROR_CODE_NETWORK_ERROR) {
-      // TODO
-      console.log('change frequency to 1');
-    }
-
     if (__DEV__) {
       console.log(msg, error.toString());
     } else {

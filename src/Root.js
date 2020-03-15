@@ -15,7 +15,6 @@ const Root = ({ads, isConnected, checkConnection, nav, incrementAd}) => {
   useEffect(() => {
     SplashScreen.hide();
     checkConnection();
-    console.log(ads.adCount);
   }, [checkConnection, ads]);
 
   return (
