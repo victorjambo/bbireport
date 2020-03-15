@@ -13,17 +13,10 @@ import {
   adLoadedInterstitial,
   resetAdLoadedInterstitial,
   resetAdLoadedRewarded,
-  incrementAdCounter,
 } from '../redux/actions';
 
 import {
-  ERROR_AD_NOT_READY,
   ERROR_AD_ALREADY_LOADED,
-  ERROR_CODE_NETWORK_ERROR,
-  ERROR_CODE_INTERNAL_ERROR,
-  ERROR_CODE_NO_FILL,
-  AM_I_FAILED_TO_LOAD,
-  AM_R_FAILED_TO_LOAD,
   AM_B_FAILED_TO_LOAD,
   ADMOBINTERSTITIAL,
   ADMOBREWARDED,
@@ -61,7 +54,7 @@ class AdManager extends React.Component {
   }
 
   admobInterstitial = () => {
-    const {ads, incrementAd} = this.props;
+    const {ads} = this.props;
     // AdMobInterstitial
     AdMobInterstitial.simulatorId = ads.interstetial;
     AdMobInterstitial.setTestDevices([AdMobInterstitial.simulatorId]);
@@ -87,13 +80,13 @@ class AdManager extends React.Component {
   };
 
   admobRewarded = () => {
-    const {ads, incrementAd} = this.props;
+    const {ads} = this.props;
     // AdMobRewarded
     AdMobRewarded.simulatorId = ads.reward;
     AdMobRewarded.setTestDevices([AdMobRewarded.simulatorId]);
     AdMobRewarded.setAdUnitID(ads.reward);
 
-    AdMobRewarded.addEventListener('rewarded', reward =>
+    AdMobRewarded.addEventListener('rewarded', () =>
       this.logSuccess(
         `${ADMOBREWARDED}OnRewarded`,
         'AdMobRewarded rewarded success',
@@ -168,7 +161,6 @@ const mapDispatchToProps = dispatch => ({
   adLoadedRewarded: bindActionCreators(adLoadedRewarded, dispatch),
   adLoadedInterstitial: bindActionCreators(adLoadedInterstitial, dispatch),
   resetAdLoadedRewarded: bindActionCreators(resetAdLoadedRewarded, dispatch),
-  incrementAd: bindActionCreators(incrementAdCounter, dispatch),
   resetAdLoadedInterstitial: bindActionCreators(
     resetAdLoadedInterstitial,
     dispatch,

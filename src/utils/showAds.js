@@ -32,8 +32,11 @@ export class Ads {
 
   showFullScreenAd = () => {
     const isInterstatial =
-      this.ads.showInterstitial && (this.isEven() && this.ads.adCount !== 8);
-    const isRewarded = this.ads.isRewardedReady && this.ads.adCount % 8 === 0;
+      this.ads.showInterstitial &&
+      (this.isEven() && this.ads.adCount !== this.ads.rewardedFequency);
+    const isRewarded =
+      this.ads.isRewardedReady &&
+      this.ads.adCount % this.ads.rewardedFequency === 0;
 
     if (isInterstatial) {
       this.showInterstitial();
