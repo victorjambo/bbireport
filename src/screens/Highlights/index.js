@@ -4,8 +4,12 @@ import {ListItem} from 'react-native-elements';
 
 import {highlights} from '../../db/highlights';
 import {colors} from '../../utils/styles';
+import adinstance from '../../utils/showAds';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {incrementAdCounter} from '../../redux/actions';
 
-const Highlights = ({navigation}) => {
+const Highlights = ({navigation, incrementAd}) => {
   return (
     <ScrollView>
       <View>
@@ -15,7 +19,10 @@ const Highlights = ({navigation}) => {
             title={item.title}
             bottomDivider
             topDivider
-            onPress={() => navigation.navigate('Highlight', {...item})}
+            onPress={() => {
+              adinstance.showAds(incrementAd);
+              navigation.navigate('Highlight', {...item});
+            }}
             chevron={{
               color: colors.gray,
               size: 30,
@@ -27,4 +34,11 @@ const Highlights = ({navigation}) => {
   );
 };
 
-export default Highlights;
+const mapDispatchToProps = dispatch => ({
+  incrementAd: bindActionCreators(incrementAdCounter, dispatch),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Highlights);

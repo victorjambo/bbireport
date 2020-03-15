@@ -1,4 +1,6 @@
 import React from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import {
   StyleSheet,
   View,
@@ -18,10 +20,12 @@ import AntDesign from 'react-native-vector-icons/dist/AntDesign';
 import bbi from '../../assets/bbi-pic.jpg';
 import {colors} from '../utils/styles';
 import rateApp from '../utils/rateApp';
+import {incrementAdCounter} from '../redux/actions';
+import adinstance from '../utils/showAds';
 
 const {height, width} = Dimensions.get('window');
 
-const Home = ({navigation}) => {
+const Home = ({navigation, incrementAd}) => {
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -45,21 +49,30 @@ const Home = ({navigation}) => {
 
         <View style={styles.row}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('Report')}
+            onPress={() => {
+              adinstance.showAds(incrementAd);
+              navigation.navigate('Report');
+            }}
             style={styles.item}>
             <Icon name="clipboard-list" size={40} color={colors.primary} />
             <Text style={styles.itemText}>Full Report</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigation.navigate('Highlights')}
+            onPress={() => {
+              adinstance.showAds(incrementAd);
+              navigation.navigate('Highlights');
+            }}
             style={styles.item}>
             <AntDesign name="bulb1" size={40} color={colors.primary} />
             <Text style={styles.itemText}>Swahili Highlights</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigation.navigate('Pillars')}
+            onPress={() => {
+              adinstance.showAds(incrementAd);
+              navigation.navigate('Pillars');
+            }}
             style={styles.item}>
             <MaterialCommunityIcons
               name="pillar"
@@ -72,20 +85,31 @@ const Home = ({navigation}) => {
 
         <View style={styles.row}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('Youth')}
+            onPress={() => {
+              adinstance.showAds(incrementAd);
+              navigation.navigate('Youth');
+            }}
             style={styles.item}>
             <Entypo name="slideshare" size={40} color={colors.primary} />
             <Text style={styles.itemText}>Youth</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigation.navigate('Abbr')}
+            onPress={() => {
+              adinstance.showAds(incrementAd);
+              navigation.navigate('Abbr');
+            }}
             style={styles.item}>
             <MaterialIcons name="language" size={40} color={colors.primary} />
             <Text style={styles.itemText}>Abbreviations</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={rateApp} style={styles.item}>
+          <TouchableOpacity
+            onPress={() => {
+              adinstance.showAds(incrementAd);
+              rateApp();
+            }}
+            style={styles.item}>
             <MaterialIcons
               name="rate-review"
               size={40}
@@ -183,4 +207,11 @@ const styles = StyleSheet.create({
   ...imageBackgroundStyles,
 });
 
-export default Home;
+const mapDispatchToProps = dispatch => ({
+  incrementAd: bindActionCreators(incrementAdCounter, dispatch),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Home);

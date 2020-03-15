@@ -8,10 +8,10 @@ import ExitOnDoubleBack from './utils/ExitOnDoubleBack';
 import Navigator from './Navigator';
 import {colors} from './utils/styles';
 import OfflineNotice from './components/OfflineNotice';
-import {checkNetwork} from './redux/actions';
+import {checkNetwork, incrementAdCounter} from './redux/actions';
 import AdManager from './utils/AdManager';
 
-const Root = ({ads, isConnected, checkConnection, nav}) => {
+const Root = ({ads, isConnected, checkConnection, nav, incrementAd}) => {
   useEffect(() => {
     SplashScreen.hide();
     checkConnection();
@@ -26,7 +26,7 @@ const Root = ({ads, isConnected, checkConnection, nav}) => {
       />
 
       <ExitOnDoubleBack exitableRoutes={['Home']} nav={nav}>
-        <Navigator screenProps={{ads}} />
+        <Navigator screenProps={{ads, incrementAd}} />
       </ExitOnDoubleBack>
 
       {!isConnected && <OfflineNotice />}
@@ -50,6 +50,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   checkConnection: bindActionCreators(checkNetwork, dispatch),
+  incrementAd: bindActionCreators(incrementAdCounter, dispatch),
 });
 
 export default connect(

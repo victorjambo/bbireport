@@ -2,15 +2,20 @@ import React from 'react';
 import {TouchableOpacity, View, Image, Text, StyleSheet} from 'react-native';
 
 import {colors} from '../../utils/styles';
+import adinstance from '../../utils/showAds';
+import {bindActionCreators} from 'redux';
+import {incrementAdCounter} from '../../redux/actions';
+import {connect} from 'react-redux';
 
-const Item = ({item, navigation}) => {
+const Item = ({item, navigation, incrementAd}) => {
   return (
     <TouchableOpacity
       key={item.id}
       style={styles.itemContainer}
-      onPress={() =>
-        navigation.navigate('PDFViewer', {title: item.title, uri: item.uri})
-      }>
+      onPress={() => {
+        adinstance.showAds(incrementAd);
+        navigation.navigate('PDFViewer', {title: item.title, uri: item.uri});
+      }}>
       <View style={styles.itemContent}>
         <Image style={styles.itemImage} source={{uri: item.image}} />
         <View style={styles.itemOverlay} />
@@ -64,4 +69,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Item;
+const mapDispatchToProps = dispatch => ({
+  incrementAd: bindActionCreators(incrementAdCounter, dispatch),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Item);

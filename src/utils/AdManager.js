@@ -75,7 +75,6 @@ class AdManager extends React.Component {
       this.errorHandler(`${ADMOBINTERSTITIAL}AdFailedToLoad`, error),
     );
     AdMobInterstitial.addEventListener('adOpened', () => {
-      incrementAd();
       this.logSuccess(ADMOBINTERSTITIAL, 'AdMobInterstitial adOpened success');
     });
     AdMobInterstitial.addEventListener('adClosed', () => {
@@ -101,7 +100,6 @@ class AdManager extends React.Component {
       ),
     );
     AdMobRewarded.addEventListener('adOpened', () => {
-      incrementAd();
       this.logSuccess(ADMOBREWARDED, 'AdMobRewarded adOpened success');
     });
     AdMobRewarded.addEventListener('adLoaded', () => {

@@ -5,10 +5,14 @@ import Modal from 'react-native-modal';
 
 import data from '../db/youth';
 import {colors} from '../utils/styles';
+import adinstance from '../utils/showAds';
+import { bindActionCreators } from 'redux';
+import { incrementAdCounter } from '../redux/actions';
+import { connect } from 'react-redux';
 
 const {height, width} = Dimensions.get('window');
 
-const Youth = () => {
+const Youth = ({incrementAd}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [desc, setDesc] = useState('');
 
@@ -48,7 +52,10 @@ const Youth = () => {
               title="Close"
               type="solid"
               size={25}
-              onPress={toggle}
+              onPress={() => {
+                adinstance.showAds(incrementAd);
+                toggle();
+              }}
               buttonStyle={styles.btnClose}
             />
           </View>
@@ -86,4 +93,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Youth;
+const mapDispatchToProps = dispatch => ({
+  incrementAd: bindActionCreators(incrementAdCounter, dispatch),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Youth);

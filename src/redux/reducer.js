@@ -17,6 +17,7 @@ import {
   INTERSTITIAL_IS_NOT_READY,
   SHOW_INTERSTITIAL,
   HIDE_INTERSTITIAL,
+  SET_HOME,
 } from '../utils/constants';
 import initialState from './initialState';
 
@@ -88,6 +89,11 @@ const adReducer = (state = initialState.ads, action) => {
       return {
         ...state,
         showInterstitial: false,
+      };
+    case SET_HOME:
+      return {
+        ...state,
+        isHome: action.payload,
       };
     default:
       return state;

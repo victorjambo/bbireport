@@ -19,7 +19,6 @@ import {colors} from './utils/styles';
 import headerBackground from '../assets/topBarBg.png';
 import arrowBack from '../assets/icons/arrow-back.png';
 import withAnalytics from './utils/Analytics';
-import {withAds} from './utils/showAds';
 
 const {width} = Dimensions.get('window');
 
@@ -89,7 +88,7 @@ const StackNavigator = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: ({navigation}) => ({
+    defaultNavigationOptions: () => ({
       headerStyle: {
         backgroundColor: colors.primary,
         borderBottomWidth: 0,
@@ -106,13 +105,7 @@ const StackNavigator = createStackNavigator(
       },
       headerTintColor: '#222222',
       headerLeft: props => (
-        <TouchableOpacity
-          onPress={() => {
-            const {ads} = navigation.getScreenProps();
-            withAds(ads);
-            props.onPress();
-          }}
-          style={styles.headerLeft}>
+        <TouchableOpacity onPress={props.onPress} style={styles.headerLeft}>
           <Image
             source={arrowBack}
             resizeMode="contain"

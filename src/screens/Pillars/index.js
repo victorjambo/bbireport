@@ -1,15 +1,15 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {View, ScrollView} from 'react-native';
 import {ListItem} from 'react-native-elements';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import data from '../../db/pillars';
 import {colors} from '../../utils/styles';
-import showAds from '../../utils/showAds';
+import adinstance from '../../utils/showAds';
+import {incrementAdCounter} from '../../redux/actions';
 
-const Pillars = ({navigation, ads}) => {
-  useEffect(() => showAds(ads));
-
+const Pillars = ({navigation, incrementAd}) => {
   return (
     <ScrollView>
       <View>
@@ -20,7 +20,10 @@ const Pillars = ({navigation, ads}) => {
             bottomDivider
             topDivider
             subtitle={`${item.desc.slice(0, 50)}...`}
-            onPress={() => navigation.navigate('Pillar', {...item})}
+            onPress={() => {
+              adinstance.showAds(incrementAd);
+              navigation.navigate('Pillar', {...item});
+            }}
             chevron={{
               color: colors.gray,
               size: 30,
@@ -36,4 +39,11 @@ const mapStateToProps = state => ({
   ads: state.ads,
 });
 
-export default connect(mapStateToProps)(Pillars);
+const mapDispatchToProps = dispatch => ({
+  incrementAd: bindActionCreators(incrementAdCounter, dispatch),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Pillars);

@@ -15,6 +15,7 @@ import {
   INTERSTITIAL_IS_NOT_READY,
   SHOW_INTERSTITIAL,
   HIDE_INTERSTITIAL,
+  SET_HOME,
 } from '../utils/constants';
 
 const setConnection = status => ({
@@ -88,17 +89,8 @@ export const resetAdCounter = () => ({
   payload: 0,
 });
 
-export const getPermit = () => {
-  return (dispatch, getState) => {
-    const {adCount, fequency} = getState();
-    const allow = adCount < fequency;
-    if (!allow) {
-      dispatch(resetAdCounter());
-    }
-    return allow;
-  };
-};
-
+export const setHomeTrue = () => ({type: SET_HOME, payload: false});
+export const setHomeFalse = () => ({type: SET_HOME, payload: false});
 export const toggleInterstitial = () => ({type: HIDE_INTERSTITIAL});
 export const hideInterstitial = () => ({type: SHOW_INTERSTITIAL});
 export const adLoadedRewarded = () => ({type: REWARDED_IS_READY});

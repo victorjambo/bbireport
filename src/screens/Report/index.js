@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 
@@ -6,7 +6,7 @@ import data, {images} from '../../db/data';
 import Item from './Item';
 import {colors} from '../../utils/styles';
 import shuffle from '../../utils/shaffle';
-import showAds from '../../utils/showAds';
+import adinstance from '../../utils/showAds';
 
 const updateImgUrl = reports => {
   const imgs = shuffle(images);
@@ -18,10 +18,8 @@ const updateImgUrl = reports => {
   return reports;
 };
 
-const Report = ({navigation, ads}) => {
+const Report = ({navigation}) => {
   const reports = updateImgUrl(data);
-
-  useEffect(() => showAds(ads));
 
   return (
     <View>
